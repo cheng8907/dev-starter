@@ -2,6 +2,8 @@
 
 A fresh starter project for C, C++, and Python development on macOS.
 
+GitHub repository: `https://github.com/cheng8907/dev-starter`
+
 ## Included
 
 - `src/c/main.c`: C sample program
@@ -11,6 +13,14 @@ A fresh starter project for C, C++, and Python development on macOS.
 - `CMakeLists.txt`: CMake build for the C and C++ programs
 - `.vscode/`: editor tasks and recommendations
 - `scripts/bootstrap.sh`: one-shot environment setup
+- `LICENSE`: MIT license for the project
+
+## Clone
+
+```bash
+git clone https://github.com/cheng8907/dev-starter.git
+cd dev-starter
+```
 
 ## Quick Start
 
@@ -53,13 +63,22 @@ pip install -r requirements-dev.txt
 
 ## OpenAI API Key
 
-Store your key in [`.env`](/Users/cheng/Documents/dev-starter/.env):
+Store your key in `.env`:
 
 ```bash
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 Keep the real key in `.env` and use [`.env.example`](/Users/cheng/Documents/dev-starter/.env.example) as the shareable template.
+
+## Git Sync
+
+The local `main` branch tracks `origin/main`, so normal GitHub sync commands work:
+
+```bash
+git pull
+git push
+```
 
 ## Optional Tooling
 
