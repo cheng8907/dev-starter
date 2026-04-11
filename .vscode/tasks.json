@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build C",
+      "type": "shell",
+      "command": "make c",
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Build C++",
+      "type": "shell",
+      "command": "make cpp",
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Run Python",
+      "type": "shell",
+      "command": "make run-python"
+    },
+    {
+      "label": "CMake Build",
+      "type": "shell",
+      "command": "make cmake-build",
+      "group": "build"
+    }
+  ]
+}

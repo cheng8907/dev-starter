@@ -1,0 +1,9 @@
+[project]
+name = "dev-starter"
+version = "0.1.0"
+description = "Starter workspace for C, C++, and Python development"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+
