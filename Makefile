@@ -1,6 +1,6 @@
 CC := cc
 CXX := c++
-PYTHON := python3
+PYTHON := ./.venv/bin/python
 VENV := .venv
 BIN_DIR := build/bin
 CMAKE_BUILD_DIR := build/cmake
@@ -31,9 +31,11 @@ run-python:
 	$(PYTHON) python/main.py
 
 venv:
-	$(PYTHON) -m venv $(VENV)
-	./$(VENV)/bin/pip install --upgrade pip
-	./$(VENV)/bin/pip install -r requirements-dev.txt
+	uv venv --python 3.13 $(VENV)
+	./$(VENV)/bin/python -m ensurepip --upgrade
+	./$(VENV)/bin/python -m pip install --upgrade pip
+	./$(VENV)/bin/python -m pip install -r requirements.txt
+	./$(VENV)/bin/python -m pip install -r requirements-dev.txt
 
 cmake:
 	cmake -S . -B $(CMAKE_BUILD_DIR) -G Ninja
