@@ -78,6 +78,48 @@ The script prints:
 - the current server time
 - whether the project is running in read-only or authenticated-ready mode
 
+## Calendar Core Module
+
+The project also now includes a reusable calendar backend module in [`python/calendar_core`](/Users/cheng/Documents/dev-starter/python/calendar_core).
+
+This base module currently provides:
+
+- timezone-aware event models
+- in-memory repository storage
+- event creation, update, deletion, and lookup
+- range queries for events
+- conflict detection for overlapping events
+
+It is intentionally UI-free so it can be integrated later with APIs, automation workflows, agent tools, or desktop/mobile frontends without rewriting the calendar logic.
+
+## Calendar Sync Integrations
+
+There is now also a sync layer in [`python/calendar_sync`](/Users/cheng/Documents/dev-starter/python/calendar_sync) for integrating the local calendar module with external providers.
+
+Supported providers in this base integration layer:
+
+- Google Calendar
+- Outlook Calendar through Microsoft Graph
+
+The sync module is designed around reusable provider adapters and a shared sync service so it can later connect to other internal product modules as well.
+
+Authentication is currently bearer-token based, which keeps the backend portable and UI-free. OAuth login screens and token refresh flows can be added later on top of the same sync interfaces.
+
+## Finance Ledger Module
+
+The project now includes a finance backend module in [`python/finance_core`](/Users/cheng/Documents/dev-starter/python/finance_core).
+
+This ledger layer currently provides:
+
+- account management
+- transaction categories
+- transaction creation, update, listing, and deletion
+- calendar-linked expense creation
+- simple category summaries
+- simple account balance summaries
+
+This is intended to be the money system of record for the app, while the calendar remains the time-based planning and logging layer.
+
 ## Build and Run Native Samples
 
 ```bash
