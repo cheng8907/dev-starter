@@ -100,10 +100,19 @@ Supported providers in this base integration layer:
 
 - Google Calendar
 - Outlook Calendar through Microsoft Graph
+- iCloud Calendar through CalDAV
 
 The sync module is designed around reusable provider adapters and a shared sync service so it can later connect to other internal product modules as well.
 
 Authentication is currently bearer-token based, which keeps the backend portable and UI-free. OAuth login screens and token refresh flows can be added later on top of the same sync interfaces.
+For iCloud, the provider uses CalDAV with your Apple Account email and an app-specific password.
+
+For Apple-device sync specifically, this means:
+
+- calendar events can sync through iCloud Calendar across your devices on the same Apple Account
+- the broader app database is not yet using native CloudKit
+
+That distinction matters because full app-data sync across Apple devices would later be better served by a native CloudKit integration, while the current module fits the existing calendar sync architecture today.
 
 ## Finance Ledger Module
 
@@ -119,6 +128,32 @@ This ledger layer currently provides:
 - simple account balance summaries
 
 This is intended to be the money system of record for the app, while the calendar remains the time-based planning and logging layer.
+
+## Budget Module
+
+The project now also includes a budget layer in [`python/budget_core`](/Users/cheng/Documents/dev-starter/python/budget_core).
+
+This module currently provides:
+
+- category-linked budgets
+- monthly and yearly budget periods
+- budget summaries based on ledger transactions
+- over-budget detection
+
+It sits on top of the finance ledger so budget calculations can stay separate from raw transaction storage.
+
+## SQLite Persistence
+
+The base layer now includes SQLite-backed repositories in [`python/persistence`](/Users/cheng/Documents/dev-starter/python/persistence).
+
+This provides a practical local persistence option for:
+
+- calendar events
+- finance accounts
+- finance categories
+- finance transactions
+
+That makes the core modules usable beyond a single process run and gives the project a better path toward a real app backend.
 
 ## Build and Run Native Samples
 
